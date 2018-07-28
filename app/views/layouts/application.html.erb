@@ -9,19 +9,38 @@
   </head>
 
   <body>
-    <ul>
-    <% if current_user %> <!--登入狀態，會回傳一個 User instance；若沒有登入，就會回傳 nil-->
-      <li><p class="navbar-text">Hi, <%= current_user.email %></p></li>
-      <li><%= link_to('Log out', destroy_user_session_path, method: :delete) %></li>
-      <li><%= link_to('Edit Profile', edit_user_path(current_user)) %></li>
-      <li><%= link_to('Change Password', edit_user_registration_path) %></li>
-   <% else %>
-      <li><%= link_to('Sign Up', new_user_registration_path) %></li>
-      <li><%= link_to('Sign In', new_user_session_path) %></li>
-    </ul>
-    <% end %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+              <li><%=link_to 'LOGO',root_path, class: "navbar-brand"%></li>
+              <% if current_user %> <!--登入狀態，會回傳一個 User instance；若沒有登入，就會回傳 nil-->
+               <li class="dropdown">
+                  <li><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin <span class="caret"></span></a>
+                     <ul class="dropdown-menu">
+                        <li><%= link_to 'Edit Profile', edit_user_path(current_user) %></li>
+                        <li><%= link_to 'Change Password', edit_user_registration_path %></li>
+                     </ul>
+              <% else %>
+                  <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+                  <li><%= link_to 'Sign In', new_user_session_path %></li>
+              <% end %>
+          </ul>
+
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+     </nav>
+
+            <div class="container">
+            <p class="notice"><%= notice %></p>
+            <p class="alert"><%= alert %></p>
+            </div>
+
+            <div class="container">
+            <%= yield %>
+            </div>
+
   </body>
 </html>
