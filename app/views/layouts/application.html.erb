@@ -13,8 +13,12 @@
       <div class="container-fluid">
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
+
+
           <ul class="nav navbar-nav">
               <li><%=link_to 'LOGO',root_path, class: "navbar-brand"%></li>
+          </ul>
+          <ul class="nav navbar-nav pull-right">
               <% if current_user %> <!--登入狀態，會回傳一個 User instance；若沒有登入，就會回傳 nil-->
                <li class="dropdown">
                   <li><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
@@ -33,14 +37,26 @@
       </div><!-- /.container-fluid -->
      </nav>
 
-            <div class="container">
-            <p class="notice"><%= notice %></p>
-            <p class="alert"><%= alert %></p>
-            </div>
 
-            <div class="container">
-            <%= yield %>
-            </div>
+      <!--Use bootstrap Dismissible alertsv-->
+      <div class="container">
+        <% if notice %>
+          <div class="alert alert-warning alert-dismissible" role="alert">
+             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+             <%= notice %>
+          </div>
+        <% end %>
+        <% if alert %>
+          <div class="alert alert-warning alert-dismissible" role="alert">
+             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+             <%= alert %>.
+          </div>
+        <% end %>
+      </div>
+
+      <div class="container">
+      <%= yield %>
+      </div>
 
   </body>
 </html>
