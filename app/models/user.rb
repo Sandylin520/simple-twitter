@@ -12,7 +12,10 @@ class User < ApplicationRecord
   validates_uniqueness_of :name
   # 加上驗證 name 不能重覆 (關鍵字提示: uniqueness)
 
-
+ #User 有許多likes
+ #想要使用 @user.liked_tweets
+  has_many :likes, dependent: :delete_all
+  has_many :liked_tweets, through: :likes, source: :tweet
 
   has_many :replies, dependent: :restrict_with_error   # 如果 User 已經有了評論，就不允許刪除帳號（刪除時拋出 Error）
   has_many :tweets, dependent: :delete_all   #一次砍掉該user所有的tweets
