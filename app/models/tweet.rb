@@ -8,4 +8,3 @@ class Tweet < ApplicationRecord
   has_many :likes, dependent: :delete_all
   has_many :liked_users, through: :likes, source: :user
 end
-vvv
