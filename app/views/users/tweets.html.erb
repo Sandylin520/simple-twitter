@@ -3,6 +3,7 @@
       <div class="col-xs-4">
         <h1>this is current user's tweet view</h1>
           <div class="user_details">
+            <%=image_tag (@user.avatar)%>
             <%=@user.name%></br>
             <%=@user.introduction%></br>
           </div>
@@ -12,7 +13,7 @@
             <% else %>
               <%= link_to "Following",followships_path, method: :create, class: "btn btn-primary"%>
             <% end %>
-          </dvi>
+          </div>
       </div>
       <div class="col-xs-8">
 

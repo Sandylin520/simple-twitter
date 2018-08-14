@@ -10,16 +10,20 @@
         </div>
          <div class="col-xs-8">
               <div class="form-group">
-                <%= f.text_field :name, placeholder: "Name",class: "form-control" %><br />
+                <%= f.label :Name %>
+                <%= f.text_field :name, placeholder: "Name",class: "form-control" %>
               </div>
               <div class="form-group">
+                <%= f.label :Introduction %>
                 <%= f.text_field :introduction, placeholder: "Type anything about you here...",class: "form-control" %>
               </div>
+
               <div class="form-group">
                 <%= f.submit %> <!--rails api:f.submit 會依據傳入的＠user 自動判斷顯示create or update -->
                 <%= button_tag "Cancel", :type => 'reset' %>   <!--使用rais api:button_tag 增加cancel按鈕-->
               </div>
           </div>
+
      <% end %>
 
 
