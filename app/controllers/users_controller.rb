@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user! #Devise 提供的方法
   def tweets
      @user = User.find(params[:id])
-
+     @usered_tweets = @user.tweets.order(created_at: :desc)
   end
 
   def edit
