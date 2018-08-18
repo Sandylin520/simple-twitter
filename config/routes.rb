@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   #前台
     root "tweets#index"
-    resources :tweets, only: [:index, :create] do
+    resources :tweets, only: [:index, :create]  do
        resources :replies, only: [:create, :index]
 
         member do

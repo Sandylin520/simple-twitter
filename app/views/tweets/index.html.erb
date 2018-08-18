@@ -4,7 +4,7 @@
      <div class="col-xs-7">
          <!--submitted_tweet_form-->
           <div class="submitted_tweet_form col-xs-12">
-            <%= form_for @tweet  do |f| %>
+            <%= form_for @tweet do |f| %>
                 <div class="form-group">
                   <%=f.text_field :description, placeholder:"What's on your mind", class:"form-control", id:"tweet_description" %>
                 </div>
