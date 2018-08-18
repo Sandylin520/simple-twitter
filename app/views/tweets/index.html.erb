@@ -1,8 +1,19 @@
 <h1>tweets前台</h1>
 <div class="container">
   <div class="row">
+     <div class="col-xs-7">
+         <!--submitted_tweet_form-->
+          <div class="submitted_tweet_form col-xs-12">
+            <%= form_for @tweet  do |f| %>
+                <div class="form-group">
+                  <%=f.text_field :description, placeholder:"What's on your mind", class:"form-control", id:"tweet_description" %>
+                </div>
+                <%=f.submit%>
+            <% end %>
+          </div>
+
           <%@tweets.each do |tweet| %>   <!--ref rails實戰聖經表單輔助方法 https://ihower.tw/rails/actionview-helpers.html-->
-            <div class="tweet_item  col-xs-7">
+            <div class="tweet_item  col-xs-12">
                  <!--user picture-->
                  <div class="col-xs-3">
                     <div class= "user_picture">
@@ -17,9 +28,10 @@
                  </div>
             </div>
            <%end%>
+      </div>
+      <div class="col-xs-5">
+            <h2>Popular</h2>
+      </div>
 
-            <div class="col-xs-5">
-              <h2>Popular</h2>
-            </div>
-  </div>
-</div>
+  </div><!--row-->
+</div><!--container-->
