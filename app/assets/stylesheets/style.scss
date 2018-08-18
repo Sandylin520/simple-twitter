@@ -1,9 +1,15 @@
+/*Main view: user =>tweet.html.erb */
+
+/*tweet item項目裡面包含了 user picture & tweeet details*/
+
+/*tweet item class套用到所有頁面*/
 .tweet_item{
   border: 2px solid lightgray;
   padding:15px;
   margin-bottom: 15px;
 }
 
+ /*user_picture*/
 .user_picture{
   height:180px;
 }
