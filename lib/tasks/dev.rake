@@ -3,6 +3,7 @@ namespace :dev do
   # 其他測試用的假資料請依需要自行撰寫
   task fake_user: :environment do
     User.destroy_all
+    # create 假資料
     20.times do |i|
       name = FFaker::Name::first_name
       file = File.open("#{Rails.root}/public/avatar/user#{i+1}.jpg") #這裡因為需要字串,所以數字i後面要串接to_s方法,將自己轉為字串
@@ -21,8 +22,21 @@ namespace :dev do
       puts user.name
   end
 
+  task fake_admin: :environment do
+    # create admin種子資料
+      user = User.create(
+      email: "sandy@gmail.com",
+      password: "12345678",
+      name: "sandy",
+      role: "admin",
+      introduction: FFaker::Lorem::sentence(30)
+      )
+      puts "admin has been generated"
+      puts "#{user.name} is the admin"
+  end
+
   task fake_tweet: :environment do
-    
+
        users = User.all
        users.each do |user| # user出發建立tweet假資料 可確保每個user均有tweet留言
          rand(10).times do
