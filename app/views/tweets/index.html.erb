@@ -27,6 +27,8 @@
                    <%= tweet.user.name%>, <%=tweet.user.created_at.to_date%><br><!--to_date單輔助方法-->
                    <%= truncate(tweet.description, length: 50)%> <br>  <!--truncate 表單輔助方法-->
                    <%= link_to "Relply",tweet_replies_path(tweet)%>
+                   <%= link_to "Like",like_tweet_path(tweet),method: :post %>
+                   <%= link_to "Unlike",unlike_tweet_path(tweet),method: :post %>
                  </div>
             </div>
            <%end%>
