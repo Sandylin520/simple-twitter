@@ -6,7 +6,7 @@ namespace :dev do
     # create 假資料
     20.times do |i|
       name = FFaker::Name::first_name
-      file = File.open("#{Rails.root}/public/avatar/user#{i+1}.jpg") #這裡因為需要字串,所以數字i後面要串接to_s方法,將自己轉為字串
+      file = File.open("#{Rails.root}/public/avatar/user#{i+1}.jpg") 
 
       user = User.new(
         name: name,

@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  mount_uploader :avatar, AvatarUploader
+  mount_uploader :avatar, AvatarUploader #將avataruploader掛載到原先用於圖片路徑的avatar上
 
   # 需要 app/views/devise 裡找到樣板，加上 name 屬性
   # 並參考 Devise 文件自訂表單後通過 Strong Parameters 的方法
@@ -22,7 +22,7 @@ class User < ApplicationRecord
 
   # has_many :方法命名，關聯資料表名稱，自己的主鍵，指向對方的外鍵
   has_many :followships , class_name: "Followship", primary_key: "id", foreign_key: "user_id", dependent: :destroy #找出該user的追蹤關係 (user model的id主鍵 指向 followships的user_id外鍵)
-  has_many :followings, through: :followships , source: :user #找出追蹤關係裡面的following_id
+  has_many :followings, through: :followships  #找出追蹤關係裡面的following_id
   #has many 和belongs to是對接關係，因為rails 從followships裡面寫的belongs_to :following, class_name: "User"可得知following是來自user
   #所以在has many後面就可不必寫source: :user
 
@@ -38,4 +38,7 @@ class User < ApplicationRecord
     self.role == "admin"
   end
 
+  def following?(user)
+    self.followings.include?(user)
+  end
 end
