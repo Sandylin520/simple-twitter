@@ -8,4 +8,9 @@ class Tweet < ApplicationRecord
   #想要使用@Tweet.liked_users的關聯方法
   has_many :likes, dependent: :delete_all
   has_many :liked_users, through: :likes, source: :user
+
+  def is_liked?(user)
+    self.liked_users.include?(user)
+  end
+
 end
