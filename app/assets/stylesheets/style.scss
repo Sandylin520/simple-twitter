@@ -11,7 +11,7 @@
 
  /*user_picture*/
 .user_picture{
-  height:120px;
+  height:200px;
 }
 
 .user_picture img{
@@ -34,4 +34,17 @@
 .submit_button{
   margin-bottom: 10px;
   float: right;
+}
+
+.tweet_item_picture{
+  height:150px;
+}
+
+.tweet_item_picture img{
+  height:100%;
+}
+
+.reply_item_row,.tweet_item_row{
+  padding:10px;
+  border: 1px solid #595959;
 }
