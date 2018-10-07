@@ -44,7 +44,8 @@
   height:100%;
 }
 
-.reply_item_row,.tweet_item_row{
+.reply_item,.tweet_item{
   padding:10px;
+  margin-bottom: 15px;
   border: 1px solid #595959;
 }
