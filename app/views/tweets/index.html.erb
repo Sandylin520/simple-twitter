@@ -49,7 +49,7 @@
                  </div>
                  <!--user details-->
                  <div class="col-xs-offset-1 col-xs-8">
-                   <%= link_to user.name,tweets_user_path(user) %><br><!--to_date單輔助方法-->
+                   <%= link_to user.name,tweets_user_path(user) %><br>
                    <%= truncate(user.introduction, length: 50)%> <br>  <!--truncate 表單輔助方法-->
                    <%if user != current_user %>
                       <%if current_user.following?(user)%>
