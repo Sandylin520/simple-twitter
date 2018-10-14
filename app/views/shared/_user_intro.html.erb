@@ -1,0 +1,14 @@
+<div class="user_details">
+   <!--tweet照片-->
+    <div class="user_picture">
+      <%= image_tag (@user.avatar)%>
+    </div>
+    <p><%=@user.name%></p></br>
+    <p><%=@user.introduction%></p>
+</div>
+<div class= "count">
+    Tweets    <%= @tweets.count %><br>
+    Following <%= @followings.count %><br>
+    Follower  <%= @followers.count %><br>
+    like      <%= @likes.count %><br>
+</div>

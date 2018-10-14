@@ -2,6 +2,11 @@ class UsersController < ApplicationController
   before_action :authenticate_user! #Devise 提供的方法
   def tweets
      @user = User.find(params[:id])
+     @tweets = @user.tweets  # for user_intro  view count div
+     @followings = @user.followings # for user_intro  view count div
+     @followers = @user.followers  # for user_intro  view count div
+     @likes =@user.likes # for user_intro  view count div
+
      @usered_tweets = @user.tweets.order(created_at: :desc)
   end
 
@@ -19,10 +24,20 @@ class UsersController < ApplicationController
   end
 
   def followings
-    @followings # 基於測試規格，必須講定變數名稱
+    @user = User.find(params[:id])
+    @tweets = @user.tweets  # for user_intro view count div
+    @followings = @user.followings # for user_intro  view count div
+    @followers = @user.followers  # for user_intro  view count div
+    @likes =@user.likes # for user_intro  view count div
+    @followings  # 基於測試規格，必須講定變數名稱
   end
 
   def followers
+    @user = User.find(params[:id])
+    @tweets = @user.tweets  # for user_intro  view count div
+    @followings = @user.followings # for user_intro  view count div
+    @followers = @user.followers  # for user_intro  view count div
+    @likes =@user.likes # for user_intro  view count div
     @followers # 基於測試規格，必須講定變數名稱
   end
 
