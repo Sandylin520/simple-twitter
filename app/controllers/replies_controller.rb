@@ -3,6 +3,10 @@ class RepliesController < ApplicationController
     @tweet = Tweet.find(params[:tweet_id])
     @replies = @tweet.replies
     @user = @tweet.user #for view中button 使用
+    @tweets = @user.tweets  # for view count div
+    @followings = @user.followings # for view count div
+    @followers = @user.followers  # for view count div
+    @likes =@user.likes # for view count div
     @reply = Reply.new  #for form_for 創建reply表單使用
   end
 
