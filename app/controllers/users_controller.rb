@@ -29,7 +29,6 @@ class UsersController < ApplicationController
     @followings = @user.followings # for user_intro  view count div
     @followers = @user.followers  # for user_intro  view count div
     @likes =@user.likes # for user_intro  view count div
-    @followings  # 基於測試規格，必須講定變數名稱
   end
 
   def followers
@@ -38,9 +37,15 @@ class UsersController < ApplicationController
     @followings = @user.followings # for user_intro  view count div
     @followers = @user.followers  # for user_intro  view count div
     @likes =@user.likes # for user_intro  view count div
-    @followers # 基於測試規格，必須講定變數名稱
   end
 
+  def likes
+    @user = User.find(params[:id])
+    @tweets = @user.tweets  # for user_intro  view count div
+    @followings = @user.followings # for user_intro  view count div
+    @followers = @user.followers  # for user_intro  view count div
+    @likes =@user.likes # for user_intro  view count div
+  end
 
   def user_params
     params.require(:user).permit(:name,:introduction,:avatar)

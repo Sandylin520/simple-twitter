@@ -1,8 +1,11 @@
 <div class="container">
   <div class="row">
       <div class="col-xs-3">
-         <%= render partial: "shared/user_intro"%>    
-          <div class="button">
+        <div class="user_details">
+             <%= render partial: "shared/user_intro"%>
+         </div>
+
+        <div class="button">
             <% if current_user == @user %>
               <%= link_to "Edit Profile",edit_user_path(@user), class: "btn btn-primary"%>
             <% else %>
@@ -12,13 +15,13 @@
                  <%= link_to "Follow",followships_path(following_id: @user), method: :post, class: "btn btn-primary"%> <!--trigger followships create controller-->
                <% end %>
             <% end %>
-          </div>
+        </div>
       </div>
 
       <div class="col-xs-8 col-xs-offset-1"> <!--grid 3,1,8-->
             <% @usered_tweets.each do |usered_tweet| %>
              <!--tweet user頭貼-->
-               <div class= "tweet_item col-xs-12">
+                <div class= "tweet_item col-xs-12">
                     <div class= "col-xs-3">
                         <div class= "user_picture">
                                <%=image_tag (usered_tweet.user.avatar)%>

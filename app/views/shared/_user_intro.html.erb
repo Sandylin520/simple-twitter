@@ -7,8 +7,19 @@
     <p><%=@user.introduction%></p>
 </div>
 <div class= "count">
-    Tweets    <%= @tweets.count %><br>
-    Following <%= @followings.count %><br>
-    Follower  <%= @followers.count %><br>
-    like      <%= @likes.count %><br>
+      <%= link_to tweets_user_path(@user) do %>
+              Tweets <%=@tweets.count%> <!--顯示文字內容-->
+      <% end %><br>
+
+      <%= link_to followings_user_path(@user) do %>
+              Followings <%=@followings.count%><!--顯示文字內容-->
+      <% end %><br>
+
+      <%= link_to followers_user_path(@user) do %>
+              Followers <%=@followers.count%> <!--顯示文字內容-->
+      <% end %><br>
+
+      <%= link_to likes_user_path(@user) do %>
+              Likes <%=@likes.count%> <!--顯示文字內容-->
+      <% end %><br>
 </div>
