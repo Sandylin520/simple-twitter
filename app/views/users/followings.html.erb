@@ -6,7 +6,31 @@
       </div>
 
       <div class="col-xs-offset-1 col-xs-8">
+        <%@followings.each do |following| %>
+          <div class="col-xs-6 following_item ">
+             <div class="col-xs-3">
+                 <div class= "item_picture">
+                   <%= image_tag following.avatar %>
+                 </div>
+             </div>
+             <div class="col-xs-offset-2 col-xs-7">
+                   <%= following.name %><br>
+                   <%= truncate(following.introduction , length:150) %>
+                   <div class="button">
+                     <%if current_user != @user %>
+                        <% if current_user.following?(@user) %>
+                           <%= link_to "Unfollow",followship_path(@user), method: :delete, class:"btn btn-primary" %>
+                        <% else %>
+                           <%= link_to "Follow",followships_path(following_id: @user), method: :post, class:"btn btn-primary"%>
+                        <% end %>
+                     <% end %>
+                   </div>
+             </div>
+          </div>
+        <%end%>
+       </div>
 
-      </div>
-  </div> <!--container-->
-</div> <!--row-->
+
+
+  </div> <!--row-->
+</div> <!--container-->
