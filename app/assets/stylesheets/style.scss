@@ -3,7 +3,7 @@
 /*tweet item項目裡面包含了 user picture & tweeet details*/
 
 /*tweet item class套用到所有頁面*/
-.following_item, .tweet_item{
+.follower_item, .following_item, .tweet_item{
   border: 2px solid lightgray;
   padding:15px;
   margin-bottom: 15px;
@@ -15,7 +15,7 @@
 }
 
 .item_picture{
-  height:120px;
+  height:100px;
 }
 
 .item_picture img, .user_picture img{
