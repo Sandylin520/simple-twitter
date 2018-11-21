@@ -1,18 +1,16 @@
-<h1>tweets前台</h1>
 <div class="container">
   <div class="row">
      <div class="col-xs-7">
          <!--submitted_tweet_form-->
-          <div class="submitted_tweet_form col-xs-12">
-            <%= form_for @tweet do |f| %>
-                <div class="form-group">
-                  <%=f.text_field :description, placeholder:"What's on your mind", class:"form-control", id:"tweet_description" %>
+          <%= form_for @tweet do |f| %>
+                <div class="form-group ">
+                  <%=f.text_area :description, placeholder:"What's on your mind", class:"form-control text-area", id:"tweet_description" %>
                 </div>
-                <div class="submit_button">
-                <%=f.submit "Tweet"%>
+                <div class="submit_button ">
+                <%=f.submit "Tweet" ,class:"btn btn-primary" %>
                 </div>
-            <% end %>
-          </div>
+          <% end %>
+
 
           <%@tweets.each do |tweet| %>   <!--ref rails實戰聖經表單輔助方法 https://ihower.tw/rails/actionview-helpers.html-->
             <div class="tweet_item col-xs-12">
