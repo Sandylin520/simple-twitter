@@ -53,9 +53,10 @@
                          <%= reply.created_at.to_date %></br>
                          <%= reply.comment %>
                        </div>
-                       <div class="tweet_item_details col-xs-offset-1 col-xs-8 ">
                        <div class="clearfix"></div>
                    </div> <!--reply_item-->
+
+
                 <% end %>
 
                 <%= form_for [@tweet,@reply] do |f| %>
