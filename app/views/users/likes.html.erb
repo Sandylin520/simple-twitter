@@ -18,18 +18,8 @@
                    <%= like.user.name %><br>
                    <%= truncate(like.user.introduction , length:150) %>  <!--like 是一張joint table -->
                    <div class="button">   <!--like 資料表下有user_id,tweet_id-->
-                           <%= link_to tweet_replies_path(like.tweet) do %>
-                              Reply(<%=like.tweet.replies_count%>)
-                           <% end %>
-                           <% if  like.tweet.is_liked?(current_user) %>
-                              <%= link_to like_tweet_path(like.tweet), method: :post do%>
-                                   Like(<%=like.tweet.likes_count%>)
-                              <% end %>
-                           <% else %>
-                              <%= link_to unlike_tweet_path(like.tweet), method: :post do%>
-                                   Unlike
-                              <% end %>
-                           <% end %>
+                     <!--使用locals來傳入區域變數-->
+                    <%= render partial: "shared/reply_and_like_button",locals: {tweet: like.tweet}%>
                    </div>
              </div>
           </div>

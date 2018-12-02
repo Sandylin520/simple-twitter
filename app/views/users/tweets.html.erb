@@ -34,6 +34,11 @@
                              <span><%=usered_tweet.created_at.to_date %></span></p>
                              <p><%= usered_tweet.description%></p>
                         </div>
+                        <div class="button">   <!--like 資料表下有user_id,tweet_id-->
+                          <!--使用locals來傳入區域便-->
+                          <!-- @usered_tweets = @user.tweets.order(created_at: :desc)-->
+                          <%= render partial: "shared/reply_and_like_button",locals: {tweet: usered_tweet}%>
+                        </div>
                     </div>
                 </div>
             <% end %>

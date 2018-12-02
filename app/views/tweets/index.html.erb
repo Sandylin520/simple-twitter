@@ -26,12 +26,7 @@
                    <%= truncate(tweet.description, length: 150)%> <br>  <!--truncate 表單輔助方法-->
                  </div>
                  <div class="col-xs-9 col-xs-offset-3">
-                   <%= link_to "Reply",tweet_replies_path(tweet)%>
-                   <% if tweet.is_liked?(current_user)%>
-                     <%= link_to "Unlike",unlike_tweet_path(tweet),method: :post,class:"text-danger" %>
-                   <% else %>
-                     <%= link_to "Like",like_tweet_path(tweet),method: :post, class:"text-danger" %>
-                   <% end %>
+                     <%= render partial: "shared/reply_and_like_button", locals: {tweet: tweet}%>                   
                  </div>
             </div>
            <%end%>
