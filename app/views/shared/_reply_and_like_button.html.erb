@@ -2,11 +2,11 @@
    Reply(<%=tweet.replies_count%>)
 <% end %>
 <% if  tweet.is_liked?(current_user) %>
-   <%= link_to like_tweet_path(tweet), method: :post do%>
-        Like(<%=tweet.likes_count%>)
+   <%= link_to unlike_tweet_path(tweet), method: :post do%>
+     Unlike
    <% end %>
 <% else %>
-   <%= link_to unlike_tweet_path(tweet), method: :post do%>
-        Unlike
+   <%= link_to like_tweet_path(tweet), method: :post do%>
+     Like(<%=tweet.likes_count%>)
    <% end %>
 <% end %>

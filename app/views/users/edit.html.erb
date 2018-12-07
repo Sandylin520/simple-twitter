@@ -4,10 +4,13 @@
      <%= form_for @user do |f| %>
          <div class="col-xs-4">
               <div class="form-group">
-                <%= image_tag (@user.avatar) if @user.avatar? %>
-                <%= f.file_field :avatar %>
-             </div>
+                 <div class= "item_picture">
+                  <%= image_tag (@user.avatar) if @user.avatar? %>
+                 </div>
+                 <%= f.file_field :avatar %>
+              </div>
         </div>
+
          <div class="col-xs-8">
               <div class="form-group">
                 <%= f.label :Name %>
