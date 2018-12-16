@@ -1,1 +1,21 @@
-<h1>tweets後台</h1>
+<div class="container">
+ <h1 class="title">This is the server side</h1>
+ <table class="table table-bordered">
+     <tr>
+       <th>User</th>
+       <th>Introduction</th>
+       <th>Replies</th>
+     </tr>
+     <%@tweets.each do |tweet| %> <!---印出一筆筆tweet資料 -->
+       <tr>
+         <td><%=tweet.user.name%></td>
+         <td><%=truncate(tweet.user.introduction, length:80)%></td>
+         <td> <!--tweet.replies是一包陣列 使用each do 方法走訪陣列中每個項目-->
+           <%tweet.replies.each do |reply|%>
+             <%=reply.comment%></br>
+           <%end%>
+         </td>
+       </tr>
+    <%end%>
+ </table>
+</div>
