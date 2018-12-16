@@ -44,7 +44,7 @@ class UsersController < ApplicationController
     @tweets = @user.tweets  # for user_intro  view count div
     @followings = @user.followings # for user_intro  view count div
     @followers = @user.followers  # for user_intro  view count div
-    @likes =@user.likes # for user_intro  view count div
+    @likes =@user.likes.order(created_at: :desc) # for user_intro  view count div
   end
 
   def user_params
