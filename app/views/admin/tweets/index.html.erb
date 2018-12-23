@@ -1,5 +1,10 @@
 <div class="container">
  <h1 class="title">This is the server side</h1>
+ <ul class="nav nav-tabs nav-justified">
+   <li role="presentation" class="active"><%= link_to "All Tweets",admin_tweets_path %></li>
+   <li role="presentation"><%= link_to "All Users", admin_users_path%><li>
+ </ul>
+ </br>
  <table class="table table-bordered">
      <tr>
        <th>User</th>
