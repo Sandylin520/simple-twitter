@@ -1,23 +1,30 @@
-<div class="container">
   <div class="row">
      <div class="col-xs-7">
          <!--submitted_tweet_form-->
-          <%= form_for @tweet do |f| %>
-                <div class="form-group ">
-                  <%=f.text_area :description, placeholder:"What's on your mind", class:"form-control text-area", id:"tweet_description" %>
-                </div>
-                <div class="submit_button ">
-                <%=f.submit "Tweet" ,class:"btn btn-primary" %>
-                </div>
-          <% end %>
-
+          <div class="form_table clearfix">
+            <%= form_for @tweet do |f| %>
+                  <div class="form-group ">
+                    <%=f.text_area :description, placeholder:"What's on your mind", class:"form-control text-area", id:"tweet_description" %>
+                  </div>
+                  <div class="submit_button ">
+                  <%=f.submit "Tweet" ,class:"btn btn-primary" %>
+                  </div>
+            <% end %>
+          </div>
 
           <%@tweets.each do |tweet| %>   <!--ref rails實戰聖經表單輔助方法 https://ihower.tw/rails/actionview-helpers.html-->
-            <div class="tweet_item col-xs-12">
+            <div class="tweet_item clearfix">
                  <!--user picture-->
                  <div class="col-xs-3">
                     <div class= "user_picture">
-                      <%= image_tag tweet.user.avatar %> <!--image_tag 表單輔助方法-->
+                         <% for img_id in 1..20 %>
+                             <% if image_path(tweet.user.avatar).include? ('/'+'user'+ img_id.to_s+'.jpg') %>
+                                 <%= image_tag('/avatar/'+ 'user'+ img_id.to_s+'.jpg', class: "img-responsive center-block img-rounded img") %>
+                             <% end %>
+                         <% end %>
+                         <!--下方程式碼被上方取代,  image_tag 表單輔助方法
+                            <%= image_tag tweet.user.avatar %>
+                         -->
                     </div>
                  </div>
                  <!--user details-->
@@ -26,20 +33,27 @@
                    <%= truncate(tweet.description, length: 150)%> <br>  <!--truncate 表單輔助方法-->
                  </div>
                  <div class="col-xs-9 col-xs-offset-3">
-                     <%= render partial: "shared/reply_and_like_button", locals: {tweet: tweet}%>                   
+                     <%= render partial: "shared/reply_and_like_button", locals: {tweet: tweet}%>
                  </div>
             </div>
-           <%end%>
+          <%end%>
       </div>
 
       <div class="col-xs-5">
             <h2>Popular</h2>
             <%@users.each do |user| %>
-            <div class="tweet_item col-xs-12">
+            <div class="tweet_item clearfix">
                  <!--user picture-->
                  <div class="col-xs-4">
                     <div class= "user_picture">
-                      <%= image_tag user.avatar %> <!--image_tag 表單輔助方法-->
+                      <% for img_id in 1..20 %>
+                          <% if image_path(user.avatar).include? ('/'+ 'user' +img_id.to_s+'.jpg') %>
+                              <%= image_tag('/avatar/'+ 'user' + img_id.to_s+'.jpg', class: "img-responsive center-block img-rounded img") %>
+                          <% end %>
+                      <% end %>
+                      <!--下方程式碼被上方取代,  image_tag 表單輔助方法
+                         <%= image_tag user.avatar %>
+                      -->
                     </div>
                  </div>
                  <!--user details-->
@@ -62,4 +76,3 @@
       </div>
 
   </div><!--row-->
-</div><!--container-->

@@ -42,4 +42,10 @@ class User < ApplicationRecord
     self.followings.include?(user)
   end
 
+  def update_likes_count(user)
+    self.update(likes_count: self.tweets.sum(:likes_count))
+    #self.tweets.sum(:likes_count)回傳like數量
+    #self.update 將實際數量存入user likes_count此屬性中
+  end
+
 end

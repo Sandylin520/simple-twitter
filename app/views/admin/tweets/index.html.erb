@@ -1,26 +1,28 @@
-<div class="container">
- <h1 class="title">This is the server side</h1>
  <ul class="nav nav-tabs nav-justified">
    <li role="presentation" class="active"><%= link_to "All Tweets",admin_tweets_path %></li>
    <li role="presentation"><%= link_to "All Users", admin_users_path%><li>
  </ul>
  </br>
- <table class="table table-bordered">
+ <table class="table">
      <tr>
-       <th>User</th>
-       <th>Introduction</th>
-       <th>Replies</th>
+       <th scope="col">ID</th>
+       <th scope="col">User</th>
+       <th scope="col">Description</th>
+       <th scope="col">Replies</th>
+       <th scope="col">Method</th>
      </tr>
      <%@tweets.each do |tweet| %> <!---印出一筆筆tweet資料 -->
        <tr>
+         <td><%=tweet.user.id%></td>
          <td><%=tweet.user.name%></td>
-         <td><%=truncate(tweet.user.introduction, length:80)%></td>
-         <td> <!--tweet.replies是一包陣列 使用each do 方法走訪陣列中每個項目-->
-           <%tweet.replies.each do |reply|%>
-             <%=reply.comment%></br>
-           <%end%>
+         <td><%=truncate(tweet.description, length:80)%></td>
+         <td><%=tweet.replies_count%></td>
+         <td>
+           <%=link_to '<i class="fa fa-trash fa-lg" aria-hidden="true"></i>'.html_safe, admin_tweet_path(tweet), method: :delete, data:{confirm: "Are you sure you want to delete?"} %>
          </td>
        </tr>
     <%end%>
  </table>
-</div>
+ <div class="text-center col-sm-12 col-md-12">
+   <%= paginate @tweets %>
+ </div>

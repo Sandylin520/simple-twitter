@@ -1,0 +1,29 @@
+<ul class="nav nav-tabs nav-justified">
+  <li role="presentation" ><%= link_to "All Tweets",admin_tweets_path %></li>
+  <li role="presentation" class="active"><%= link_to "All Users", admin_users_path%><li>
+</ul>
+</br>
+<table class="table">
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">User</th>
+      <th scope="col">Tweets</th>
+      <th scope="col">Following</th>
+      <th scope="col">Follower</th>
+      <th scope="col">Like</th>
+    </tr>
+    <%@users.each do |user| %> <!---印出一筆筆tweet資料 -->
+      <tr>
+        <td><%=user.id%></td>
+        <td><%=link_to user.name,tweets_user_path(user)%></td>
+        <td><%=user.tweets.count%></td>
+        <td><%=user.followings.count%></td>
+        <td><%=user.followers.count%></td>
+        <td><%=user.tweets.sum(:likes_count)%></td>
+        <!--user.tweets.sum(:likes_count)回傳所有tweet累積like數量-->
+      </tr>
+   <%end%>
+</table>
+<div class="text-center col-sm-12 col-md-12">
+  <%= paginate @users %>
+</div>

@@ -1,11 +1,23 @@
-/*Main view: user =>tweet.html.erb */
+/*nav*/
+li.name {
+    padding: 15px;
+}
 
+/*Main view: user =>tweet.html.erb */
+.container {
+  margin-top: 10px;
+}
 /*tweet item項目裡面包含了 user picture & tweeet details*/
 
 /*tweet item class套用到所有頁面*/
-.follower_item, .following_item, .tweet_item{
-  border: 2px solid lightgray;
-  padding:15px;
+.form_table{
+  border: none;
+  margin-top: 25px;
+}
+
+.follower_item, .following_item{
+  border: 1px solid lightgray;
+  padding:10px;
   margin-bottom: 15px;
 }
 
@@ -19,7 +31,7 @@
 }
 
 .item_picture img, .user_picture img{
-  height:100%;
+  height:65px;
 }
 
 textarea.text-area{
@@ -49,7 +61,7 @@ textarea.text-area{
 .reply_item,.tweet_item{
   padding:10px;
   margin-bottom: 15px;
-  border: 2px solid lightgray;
+  border: 1px solid lightgray;
 }
 
 .count{
@@ -59,7 +71,11 @@ textarea.text-area{
 
 /*user intro view*/
 
-.user_details .name {
+.user_details .name{
  font-size:2em;
  color:#337ab7;
 } /*選擇div class:user_details 中的p class:name*/
+
+nav.navbar.navbar-default{
+  margin-bottom: 0px;
+}

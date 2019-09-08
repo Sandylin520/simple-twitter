@@ -5,12 +5,16 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+
+gem 'kaminari'
 # user authentication
 gem 'devise'
 # file uploader
 gem 'carrierwave'
 # resize image size
 # gem 'mini_magick'
+gem 'font-awesome-sass', '~> 5.8.1'
+
 
 gem 'ffaker'
 
