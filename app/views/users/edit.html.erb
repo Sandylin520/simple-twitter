@@ -5,7 +5,12 @@
          <div class="col-xs-4">
               <div class="form-group">
                  <div class= "item_picture">
+                       <% if image_path(tweet.user.avatar).include? ('/'+'user'+ img_id.to_s+'.jpg') %>
+                           <%= image_tag('/avatar/'+ 'user1'+'.jpg', class: "img-responsive center-block img-rounded img") %>
+                       <% end %>
+                  <!--  由上方程式碼取代  
                   <%= image_tag (@user.avatar) if @user.avatar? %>
+                  -->
                  </div>
                  <%= f.file_field :avatar %>
               </div>

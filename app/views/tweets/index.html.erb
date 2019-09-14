@@ -17,19 +17,19 @@
                  <!--user picture-->
                  <div class="col-xs-3">
                     <div class= "user_picture">
-                         <% for img_id in 1..20 %>
-                             <% if image_path(tweet.user.avatar).include? ('/'+'user'+ img_id.to_s+'.jpg') %>
-                                 <%= image_tag('/avatar/'+ 'user'+ img_id.to_s+'.jpg', class: "img-responsive center-block img-rounded img") %>
-                             <% end %>
-                         <% end %>
+                      <% for img_id in 1..20 %>
+                          <% if image_path(tweet.user.avatar).include? ('/'+ 'user' +img_id.to_s+'.jpg') %>
+                              <%= image_tag('/avatar/'+ 'user' + img_id.to_s+'.jpg', class: "img-responsive center-block img-rounded img") %>
+                          <% end %>
+                      <% end %>
                          <!--下方程式碼被上方取代,  image_tag 表單輔助方法
-                            <%= image_tag tweet.user.avatar %>
-                         -->
+                          <%= image_tag tweet.user.avatar %>
+                          -->
                     </div>
                  </div>
                  <!--user details-->
                  <div class="col-xs-9">
-                   <%= tweet.user.name%>, <%=tweet.user.created_at.to_date%><br>
+                   <%= link_to tweet.user.name,tweets_user_path(tweet.user.id)%>, <%=tweet.user.created_at.to_date%><br>
                    <%= truncate(tweet.description, length: 150)%> <br>  <!--truncate 表單輔助方法-->
                  </div>
                  <div class="col-xs-9 col-xs-offset-3">

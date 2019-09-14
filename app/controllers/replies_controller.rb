@@ -13,11 +13,11 @@ class RepliesController < ApplicationController
   def create
     @tweet = Tweet.find(params[:tweet_id])#確認評論屬於哪一個tweet
     @reply = @tweet.replies.build(reply_params)#建立屬於 ＠tweet的評論,評論內容來自表單傳入的資料
-    @reply.user = current_user
+    @reply.user = current_user #reply資料表要有user_id, 將current_user指派爲reply user
     if  @reply.save #將評論存入資料庫
       flash[:notice] = "Reply is successfully created"
       redirect_to tweet_replies_path(@tweet)#回到reply index頁面
-    else
+    else #如果沒存成功
       flash[:alert] ="Reply cannot be blank"
       redirect_to tweet_replies_path(@tweet)
     end

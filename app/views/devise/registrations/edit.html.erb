@@ -1,11 +1,15 @@
 <div class="col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 ">
-    <div class="block"> <!--為設定背景顏色建立的div-->
-      <h3>Edit User</h3>
+    <div class="block panel panel-default"> <!--為設定背景顏色建立的div-->
+      <div class="panel-heading text-center">
+        <h3 class="heading">Change Password</h3>
+      </div>
 
+      <div class="panel-body">
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
         <%= devise_error_messages! %>
 
 <!-- 增加 name 輸入框之後，需要讓 name 屬性通過 Strong Parameter 驗證，-->
+   <!-- set not able to change name and email
         <div class="field form-group">
             <%= f.label :name %><br />
             <%= f.text_field :name, autofocus: true %>
@@ -16,7 +20,7 @@
           <%= f.label :email %><br />
           <%= f.email_field :email %>
         </div>
-
+     -->
 
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
           <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
@@ -24,7 +28,7 @@
 
         <div class="field form-group">
           <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-          <%= f.password_field :password, autocomplete: "off" %>
+          <%= f.password_field :password, autocomplete: "off",class:"form-control" %>
           <% if @minimum_password_length %>
             <br />
             <em><%= @minimum_password_length %> characters minimum</em>
@@ -34,24 +38,23 @@
 
         <div class="field form-group">
           <%= f.label :password_confirmation %><br />
-          <%= f.password_field :password_confirmation, autocomplete: "off" %>
+          <%= f.password_field :password_confirmation, autocomplete: "off",class:"form-control" %>
         </div>
 
         <div class="field form-group">
           <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-          <%= f.password_field :current_password, autocomplete: "off" %>
+          <%= f.password_field :current_password, autocomplete: "off",class:"form-control" %>
         </div>
 
-        <div class="actions">
-          <%= f.submit "Update" %>
+        <div class="actions form-group">
+          <%= f.submit "Update Password",class:"btn btn-primary form-control" %>
+        </div>
+        <div class="actions form-group">
+          <%= link_to "Cancel Change",tweets_path, class:"btn btn-default form-control"%>
         </div>
       <% end %>
 
-      <br />
-      <h3>Cancel my account</h3>
-      <p><%= t('unhappy')%> <%= link_to t('Cancel my account'), registration_path(resource_name), class:"btn btn-danger btn-xs",data: { confirm: "Are you sure?" }, method: :delete %></p>
 
-      <br />
-      <%= link_to "Back", :back , class:"btn btn-primary" %>
+      </div>
  </div>
 </div>

@@ -9,7 +9,7 @@
             <% if current_user == @user %>
               <%= link_to "Edit Profile",edit_user_path(@user), class: "btn btn-primary"%>
             <% else %>
-              <%= link_to "Following",followings_user_path(@user), method: :create, class: "btn btn-primary"%>
+              <%= link_to "Following",followings_user_path(@user), method: :get, class: "btn btn-primary"%>
             <% end %>
           </div>
       </div>
