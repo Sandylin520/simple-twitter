@@ -1,7 +1,6 @@
-<div class="container">
-  <div class="row">
+  <div class="row user-page">
       <div class="col-xs-3">
-        <div class="user_details">
+         <div class="user_details">
              <%= render partial: "shared/user_intro"%>
          </div>
 
@@ -18,13 +17,21 @@
         </div>
       </div>
 
-      <div class="col-xs-8 col-xs-offset-1"> <!--grid 3,1,8-->
+      <div class="col-xs-offset-1 col-xs-7">
+            <h1>Tweet</h1>
             <% @usered_tweets.each do |usered_tweet| %>
              <!--tweet user頭貼-->
                 <div class= "tweet_item col-xs-12">
                     <div class= "col-xs-3">
                         <div class= "user_picture">
+                          <% for img_id in 1..20 %>
+                              <% if image_path(usered_tweet.user.avatar).include? ('/'+ 'user' +img_id.to_s+'.jpg') %>
+                                  <%= image_tag('/avatar/'+ 'user' + img_id.to_s+'.jpg', class: "img-responsive center-block img-rounded img") %>
+                              <% end %>
+                          <% end %>
+                          <!--下方程式碼由上方取代
                                <%=image_tag (usered_tweet.user.avatar)%>
+                           -->
                         </div>
                     </div>
              <!--tweet user 內容-->
@@ -45,5 +52,4 @@
            </div>
         </div>
 
-  </div> <!--container-->
 </div><!--row-->

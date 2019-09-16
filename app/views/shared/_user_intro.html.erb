@@ -16,18 +16,18 @@
 </div>
 <div class= "count">
       <%= link_to tweets_user_path(@user) do %>
-              Tweets <%=@tweets.count%> <!--顯示文字內容-->
+              Tweets <%=@user.tweets.count%> <!--顯示文字內容-->
       <% end %><br>
 
       <%= link_to followings_user_path(@user) do %>
-              Followings <%=@followings.count%><!--顯示文字內容-->
+              Followings <%=@user.followings.count%><!--顯示文字內容-->
       <% end %><br>
 
       <%= link_to followers_user_path(@user) do %>
-              Followers <%=@followers.count%> <!--顯示文字內容-->
+              Followers <%=@user.followers.count%> <!--顯示文字內容-->
       <% end %><br>
 
       <%= link_to likes_user_path(@user) do %>
-              Likes <%=@likes.count%> <!--顯示文字內容-->
+              Likes <%=@user.likes.count%> <!--顯示文字內容-->
       <% end %><br>
 </div>

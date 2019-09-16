@@ -3,10 +3,10 @@
 <% end %>
 <% if  tweet.is_liked?(current_user) %><!-- 已經like顯示unlike按鈕-->
    <%= link_to unlike_tweet_path(tweet), method: :post do%>
-     Unlike
+     <i class="fas fa-heart">(<%=tweet.likes_count%>)</i>
    <% end %>
 <% else %><!--未like則顯示like數量,並且可以點選like-->
    <%= link_to like_tweet_path(tweet), method: :post do%>
-     Like(<%=tweet.likes_count%>)
+     <i class="far fa-heart">(<%=tweet.likes_count%>)</i>
    <% end %>
 <% end %>

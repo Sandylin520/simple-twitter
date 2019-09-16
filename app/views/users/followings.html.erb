@@ -1,37 +1,38 @@
-<div class="container">
-  <div class="row">
+  <div class="row user-page">
 
       <div class="col-xs-3"> <!--grid 3,1,8-->
         <%= render partial: "shared/user_intro"%>
       </div>
 
-      <div class="col-xs-offset-1 col-xs-8">
+      <div class="col-xs-offset-1 col-xs-7">
         <h1>Following</h1>
-        <%@followings.each do |following| %>
+        <%@followings.each do |user| %>
           <div class="col-xs-12 following_item ">
-             <div class="col-xs-3">
-                 <div class= "item_picture">
-                   <%= image_tag following.avatar %>
+                 <div class= "item_picture col-xs-3">
+                   <% for img_id in 1..20 %>
+                       <% if image_path(user.avatar).include? ('/'+ 'user' +img_id.to_s+'.jpg') %>
+                           <%= image_tag('/avatar/'+ 'user' + img_id.to_s+'.jpg', class: "img-responsive center-block img-rounded img") %>
+                       <% end %>
+                   <% end %>
+                   <!--下方程式碼由上方取代
+                    <%= image_tag user.avatar %>
+                   -->
                  </div>
+                 <div class="col-xs-8 col-xs-offset-1">
+                    <%= user.name %><br>
+                    <%= truncate(user.introduction , length:150) %>
+                    <div class="button">
+                       <%if current_user != user %>
+                          <% if current_user.following?(user) %>
+                             <%= link_to "Unfollow",followship_path(user), method: :delete, class:"btn btn-primary" %>
+                          <% else %>
+                             <%= link_to "Follow",followships_path(following_id: user), method: :post, class:"btn btn-primary"%>
+                          <% end %>
+                       <% end %>
+                    </div>
+                  </div>
              </div>
-             <div class="col-xs-9">
-                   <%= following.name %><br>
-                   <%= truncate(following.introduction , length:150) %>
-                   <div class="button">
-                     <%if current_user != @user %>
-                        <% if current_user.following?(@user) %>
-                           <%= link_to "Unfollow",followship_path(@user), method: :delete, class:"btn btn-primary" %>
-                        <% else %>
-                           <%= link_to "Follow",followships_path(following_id: @user), method: :post, class:"btn btn-primary"%>
-                        <% end %>
-                     <% end %>
-                   </div>
-             </div>
-          </div>
         <%end%>
-       </div>
-
-
+      </div>
 
   </div> <!--row-->
-</div> <!--container-->

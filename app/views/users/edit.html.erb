@@ -1,20 +1,20 @@
 <div class="container">
   <div class="row">
 
-     <%= form_for @user do |f| %>
-         <div class="col-xs-4">
-              <div class="form-group">
+   <%= form_for @user do |f| %>
+       <div class="col-xs-4">
                  <div class= "item_picture">
-                       <% if image_path(tweet.user.avatar).include? ('/'+'user'+ img_id.to_s+'.jpg') %>
-                           <%= image_tag('/avatar/'+ 'user1'+'.jpg', class: "img-responsive center-block img-rounded img") %>
-                       <% end %>
-                  <!--  由上方程式碼取代  
+                   <% if @user.avatar? %> <!--return nil or true -->
+                       <%= image_tag('/avatar/'+ 'user1' + '.jpg', class: "img-responsive center-block img-rounded img") %>
+                   <% end %>
+                 </div>
+                  <!--  由上方程式碼取代
                   <%= image_tag (@user.avatar) if @user.avatar? %>
                   -->
+                 <div class="form-group avatar-button col-xs-10 col-xs-offset-2">
+                   <%= f.file_field :avatar %>
                  </div>
-                 <%= f.file_field :avatar %>
-              </div>
-        </div>
+         </div>
 
          <div class="col-xs-8">
               <div class="form-group">
@@ -25,17 +25,11 @@
                 <%= f.label :Introduction %>
                 <%= f.text_field :introduction, placeholder: "Type anything about you here...",class: "form-control" %>
               </div>
-
               <div class="form-group">
                 <%= f.submit %> <!--rails api:f.submit 會依據傳入的＠user 自動判斷顯示create or update -->
                 <%= button_tag "Cancel", :type => 'reset' %>   <!--使用rais api:button_tag 增加cancel按鈕-->
               </div>
-          </div>
-
-     <% end %>
-
-
-
-
+         </div>
+   <%end%>
   </div>
 </div>

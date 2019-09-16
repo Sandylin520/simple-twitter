@@ -3,10 +3,7 @@ class RepliesController < ApplicationController
     @tweet = Tweet.find(params[:tweet_id])
     @replies = @tweet.replies
     @user = @tweet.user #for view中button 使用
-    @tweets = @user.tweets  # for view count div
-    @followings = @user.followings # for view count div
-    @followers = @user.followers  # for view count div
-    @likes =@user.likes # for view count div
+  
     @reply = Reply.new  #for form_for 創建reply表單使用
   end
 
@@ -21,6 +18,20 @@ class RepliesController < ApplicationController
       flash[:alert] ="Reply cannot be blank"
       redirect_to tweet_replies_path(@tweet)
     end
+  end
+
+
+  def like
+    @tweet = Tweet.find(params[:id])
+    @tweet.likes.create!(user: current_user)
+    redirect_to tweet_replies_path(@tweet)
+  end
+
+  def unlike
+    @tweet = Tweet.find(params[:id])
+    like = Like.where(tweet:@tweet,user:current_user)
+    like.destroy_all
+    redirect_to tweet_replies_path(@tweet)
   end
 
 

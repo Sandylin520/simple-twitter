@@ -1,27 +1,33 @@
-<div class="container">
-  <div class="row">
+<div class="row user-page">
 
       <div class="col-xs-3"> <!--grid 3,1,8-->
         <%= render partial: "shared/user_intro"%>
       </div>
 
-      <div class="col-xs-offset-1 col-xs-8">
+      <div class="col-xs-offset-1 col-xs-7">
         <h1>Like</h1>
         <%@likes.each do |like| %>
-          <div class="col-xs-12 following_item ">
-             <div class="col-xs-3">
-                 <div class= "item_picture">
-                   <%= image_tag like.user.avatar %>
+          <div class="col-xs-12 liked_tweet_item">
+                 <div class= "item_picture col-xs-3">
+                   <% for img_id in 1..20 %>
+                       <% if image_path(like.user.avatar).include? ('/'+ 'user' +img_id.to_s+'.jpg') %>
+                           <%= image_tag('/avatar/'+ 'user' + img_id.to_s+'.jpg', class: "img-responsive center-block img-rounded img") %>
+                       <% end %>
+                   <% end %>
+                   <!--下方程式碼由上方取代
+                     <%= image_tag like.user.avatar %>
+                   -->
                  </div>
-             </div>
-             <div class="col-xs-9">
-                   <%= like.user.name %><br>
-                   <%= truncate(like.user.introduction , length:150) %>  <!--like 是一張joint table -->
-                   <div class="button">   <!--like 資料表下有user_id,tweet_id-->
-                     <!--使用locals來傳入區域變數-->
-                    <%= render partial: "shared/reply_and_like_button",locals: {tweet: like.tweet}%>
-                   </div>
-             </div>
+                 <div class="col-xs-8 col-xs-offset-1">
+                       <p><%= like.user.name %>
+                       <span><%=like.created_at.to_date %></span></p>
+                       <%= truncate(like.user.introduction , length:150) %>  <!--like 是一張joint table -->
+                       <div class="button">   <!--like 資料表下有user_id,tweet_id-->
+                         <!--使用locals來傳入區域變數-->
+                         <!-- @likes = @user.likes-->
+                        <%= render partial: "shared/reply_and_like_button",locals: {tweet: like}%>
+                       </div>
+                 </div>
           </div>
         <%end%>
       </div>

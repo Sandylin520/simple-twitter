@@ -15,15 +15,21 @@ li.name {
   margin-top: 25px;
 }
 
-.follower_item, .following_item{
+.follower_item,.following_item{
   border: 1px solid lightgray;
   padding:10px;
   margin-bottom: 15px;
+  padding-bottom: 25px;
+  padding-top: 15px;
+}
+
+.user_details {
+    margin-top: 25px;
 }
 
  /*user_picture*/
 .user_picture{
-  height:120px;
+  height:150px;
 }
 
 .item_picture{
@@ -31,7 +37,7 @@ li.name {
 }
 
 .item_picture img, .user_picture img{
-  height:65px;
+  height:120px;
 }
 
 textarea.text-area{
@@ -59,16 +65,25 @@ textarea.text-area{
 }
 
 .reply_item,.tweet_item{
-  padding:10px;
+  padding:20px 0px;
   margin-bottom: 15px;
   border: 1px solid lightgray;
 }
 
+.liked_tweet_item{
+  padding-top:15px;
+  padding-bottom:35px;
+  border: 1px solid lightgray;
+  margin-bottom: 15px;
+}
 .count{
   color:black;
   font-size: 2em;
 }
 
+.user-page{
+  margin-top: 20px;
+}
 /*user intro view*/
 
 .user_details .name{
@@ -97,16 +112,13 @@ nav.navbar.navbar-default{
     margin: 0px;
     border-bottom: 1px solid transparent;
 }
-/*reply*/
-/*.shared_user_picture{
-  height:120px;
-} */
 
-/*
-.item_picture{
-  height:100px;
+.button{
+  margin-top: 5px;
 }
 
-.item_picture img, .user_picture img{
-  height:65px;
-}*/
+
+/* user edit view*/
+.avatar-button{
+  margin-top: 40px;
+}

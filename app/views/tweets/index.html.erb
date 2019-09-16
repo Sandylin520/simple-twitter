@@ -1,5 +1,5 @@
   <div class="row">
-     <div class="col-xs-7">
+     <div class="col-xs-6">
          <!--submitted_tweet_form-->
           <div class="form_table clearfix">
             <%= form_for @tweet do |f| %>
@@ -28,23 +28,23 @@
                     </div>
                  </div>
                  <!--user details-->
-                 <div class="col-xs-9">
+                 <div class="col-xs-8 col-xs-offset-1">
                    <%= link_to tweet.user.name,tweets_user_path(tweet.user.id)%>, <%=tweet.user.created_at.to_date%><br>
                    <%= truncate(tweet.description, length: 150)%> <br>  <!--truncate 表單輔助方法-->
-                 </div>
-                 <div class="col-xs-9 col-xs-offset-3">
+                   <div class="button">
                      <%= render partial: "shared/reply_and_like_button", locals: {tweet: tweet}%>
+                   </div>
                  </div>
             </div>
           <%end%>
       </div>
 
-      <div class="col-xs-5">
-            <h2>Popular</h2>
-            <%@users.each do |user| %>
+      <div class="col-xs-6">
+          <h2>Popular</h2>
+          <%@users.each do |user| %>
             <div class="tweet_item clearfix">
                  <!--user picture-->
-                 <div class="col-xs-4">
+                 <div class="col-xs-3">
                     <div class= "user_picture">
                       <% for img_id in 1..20 %>
                           <% if image_path(user.avatar).include? ('/'+ 'user' +img_id.to_s+'.jpg') %>
@@ -57,22 +57,23 @@
                     </div>
                  </div>
                  <!--user details-->
-                 <div class="col-xs-8">
+                 <div class="col-xs-8 col-xs-offset-1">
                    <%= link_to user.name,tweets_user_path(user) %><br>
                    <%= truncate(user.introduction, length: 100)%> <br>  <!--truncate 表單輔助方法-->
-                 </div>
-                 <div class="col-xs-8 col-xs-offset-4">
-                   <%if user != current_user %>
-                      <%if current_user.following?(user)%>
-                       <%= link_to "Unfollow",followship_path(user),method: :delete, class: "btn btn-info" %> <!--觸發 followships controller-destroy action-->
-                      <%else%>
-                      <!--/followships(:format)後面是沒有帶:id參數的,但我們需要一個參數進來,所以必須在_path(following_id:xxx)裡面手動丟入參數-->
-                       <%= link_to "Follow",followships_path(following_id: user),method: :post, class: "btn btn-info" %> <!--觸發 followships controller-create action-->
-                      <%end%>
-                   <% end %>
-                 </div>
+                   <div class="button">
+                     <%if user != current_user %>
+                        <%if current_user.following?(user)%>
+                         <%= link_to "Unfollow",followship_path(user),method: :delete, class: "btn btn-info" %> <!--觸發 followships controller-destroy action-->
+                        <%else%>
+                        <!--/followships(:format)後面是沒有帶:id參數的,但我們需要一個參數進來,所以必須在_path(following_id:xxx)裡面手動丟入參數-->
+                         <%= link_to "Follow",followships_path(following_id: user),method: :post, class: "btn btn-info" %> <!--觸發 followships controller-create action-->
+                        <%end%>
+                     <% end %>
+                   </div>
+                  </div>
             </div>
-           <%end%>
+          <%end%>
       </div>
+
 
   </div><!--row-->
