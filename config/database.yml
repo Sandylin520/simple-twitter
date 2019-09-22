@@ -17,9 +17,11 @@ development:
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
-  <<: *default #是說要繼承前面設定的default，
+  <<: *default #繼承前面設定的default，
   database: db/test.sqlite3
 
 production:
-  adapter: postgresql #要使用的資料庫為postgresql
-  encoding: Unicode   #encoding為編碼方式，使用的是Unicode
+  <<: *default #繼承前面設定的default，
+  database: db/test.sqlite3
+  adapter: postgresql
+  encoding: Unicode
