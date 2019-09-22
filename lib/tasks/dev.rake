@@ -68,15 +68,12 @@ namespace :dev do
 
   #直接從like資料表出發
   task fake_likes: :environment do #建立一筆like資料需要有"user_id", "tweet_id"
-
-
-    200.times do |i|
-      @users = User.where.not(id: user.id).shuffle
+    200.times do
       Like.create!(
         tweet_id: rand(Tweet.first.id..Tweet.last.id),
-        user_id: rand(@user.first.id..@user.last.id)
+        user_id: rand(User.first.id..User.last.id)
        )
-      end
+    end
     puts "now you have #{Like.count} likes data"
   end
 
