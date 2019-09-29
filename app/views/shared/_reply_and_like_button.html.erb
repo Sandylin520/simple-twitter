@@ -1,5 +1,5 @@
 <%= link_to tweet_replies_path(tweet) do %>
-   Reply(<%=tweet.replies_count%>)
+   <i class="far fa-comment">(<%=tweet.replies_count%>)</i>
 <% end %>
 <% if  tweet.is_liked?(current_user) %><!-- 已經like顯示unlike按鈕-->
    <%= link_to unlike_tweet_path(tweet), method: :post do%>
