@@ -26,7 +26,7 @@
                         <div class= "user_picture">
                           <% for img_id in 1..20 %>
                               <% if image_path(usered_tweet.user.avatar).include? ('/'+ 'user' +img_id.to_s+'.jpg') %>
-                                  <%= image_tag('/avatar/'+ 'user' + img_id.to_s+'.jpg', class: "img-responsive center-block img-rounded img") %>
+                                  <%= image_tag('/avatar/'+ 'user' + img_id.to_s+'.jpg', class: "img-responsive img-rounded img user_tweet") %>
                               <% end %>
                           <% end %>
                           <!--下方程式碼由上方取代

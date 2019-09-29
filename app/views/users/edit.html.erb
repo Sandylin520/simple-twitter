@@ -3,7 +3,7 @@
 
    <%= form_for @user do |f| %>
        <div class="col-xs-4">
-                 <div class= "item_picture">
+                 <div class= "each_user_picture">
                    <% if @user.avatar? %> <!--return nil or true -->
                        <%= image_tag('/avatar/'+ 'user1' + '.jpg', class: "img-responsive center-block img-rounded img") %>
                    <% end %>

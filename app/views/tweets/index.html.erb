@@ -16,10 +16,10 @@
             <div class="tweet_item clearfix">
                  <!--user picture-->
                  <div class="col-xs-3">
-                    <div class= "user_picture">
+                    <div class= "tweet_user_picture">
                       <% for img_id in 1..20 %>
                           <% if image_path(tweet.user.avatar).include? ('/'+ 'user' +img_id.to_s+'.jpg') %>
-                              <%= image_tag('/avatar/'+ 'user' + img_id.to_s+'.jpg', class: "img-responsive center-block img-rounded img") %>
+                              <%= image_tag('/avatar/'+ 'user' + img_id.to_s+'.jpg', class: "img-responsive img-rounded img") %>
                           <% end %>
                       <% end %>
                          <!--下方程式碼被上方取代,  image_tag 表單輔助方法
@@ -45,10 +45,10 @@
             <div class="tweet_item clearfix">
                  <!--user picture-->
                  <div class="col-xs-3">
-                    <div class= "user_picture">
+                    <div class= "tweet_user_picture">
                       <% for img_id in 1..20 %>
                           <% if image_path(user.avatar).include? ('/'+ 'user' +img_id.to_s+'.jpg') %>
-                              <%= image_tag('/avatar/'+ 'user' + img_id.to_s+'.jpg', class: "img-responsive center-block img-rounded img") %>
+                              <%= image_tag('/avatar/'+ 'user' + img_id.to_s+'.jpg', class: "img-responsive img-rounded img") %>
                           <% end %>
                       <% end %>
                       <!--下方程式碼被上方取代,  image_tag 表單輔助方法
