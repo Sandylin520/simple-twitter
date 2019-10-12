@@ -19,7 +19,7 @@
             <div class="tweet_item col-xs-12">
                  <!--tweet user圖片-->
                  <div class="tweet_item_picture col-xs-3">
-                   <% if @user.avatar? %> <!--return nil or true -->
+                   <% if @tweet.user.avatar? %> <!--return nil or true -->
                        <%= image_tag('/avatar/'+ 'user1' + '.jpg', class: "img-responsive center-block img-rounded img") %>
                    <% end %>
                    <!--取代下方
