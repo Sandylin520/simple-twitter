@@ -19,7 +19,11 @@
             <div class="tweet_item col-xs-12">
                  <!--tweet user圖片-->
                  <div class="tweet_item_picture col-xs-3">
-                       <%= image_tag('/avatar/'+ 'user1' + '.jpg', class: "img-responsive center-block img-rounded img") %>
+                   <% for img_id in 1..20 %>
+                     <% if image_path(@user.avatar).include? ('/'+'user'+ img_id.to_s+'.jpg') %>
+                         <%= image_tag('/avatar/'+ 'user'+ img_id.to_s+'.jpg', class: "img-responsive center-block img-rounded img") %>
+                     <% end %>
+                   <% end %>
                    <!--取代下方
                    <%=image_tag (@tweet.user.avatar)%>-->
                  </div>
