@@ -6,7 +6,7 @@ namespace :dev do
                       #所以不需要在去寫 Tweet.destroy_all, Like.destroy_all,  Reply.destroy_all
     # create 假資料
     20.times do |i|
-      name = FFaker::Name::first_name
+      name = FFaker::Name.first_name
       file = File.open("#{Rails.root}/public/avatar/user#{i+1}.jpg")
 
       user = User.new(
@@ -19,13 +19,12 @@ namespace :dev do
 
       user.save!
     end
-      puts "now you have #{User.count} users data"
-      puts user.name
-  end
+    puts "now you have #{User.count} users data"
+   end
 
   task fake_admin: :environment do
-    file = File.open("#{Rails.root}/public/avatar/user1.jpg")
     # create admin種子資料
+      file = File.open("#{Rails.root}/public/avatar/user1.jpg")
       user = User.create(
       email: "sandy@gmail.com",
       password: "12345678",
